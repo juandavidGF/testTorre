@@ -13,22 +13,35 @@
     </v-toolbar>
 
     <v-content>
-      
+      <ul>
+        <v-btn @click="refreshRecom">holaRecom</v-btn>
+        <!-- <list v-for="recom in listRecom"/>  -->
+      </ul>      
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import List from './components/List.vue'
+import getRecom from '../api/index.js'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    List
   },
   data () {
     return {
-      //
+      listRecom: []
+    }
+  },
+  methods: {
+    refreshRecom () {
+      const self = this
+      getRecom()
+        .then(function(params) {
+          this.listRecom
+        })
     }
   }
 }
