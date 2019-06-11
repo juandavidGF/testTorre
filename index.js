@@ -39,12 +39,21 @@ async function main() {
     const dataUser = await query(url)
     console.log(dataUser.strengths)
 
-    search = ['Fronted', 'Communication']
+    search = ['Frontend', 
+    'Communication', 
+    'Strategy', 
+    'Experience Design', 
+    'Product Management', 
+    'Democratic systems',
+    'Innovation']
+
+    let confiabilidad = 600
     let matchs = []
+
     for(let i = 0; i < search.length; i++ ) {
         for(let j = 0; j < dataUser.strengths.length; j++) {
-            console.log(dataUser.strengths[j].name)
-            if(search[i] == dataUser.strengths[j].name) {
+            // console.log(dataUser.strengths[j].name)
+            if((search[i] == dataUser.strengths[j].name) && (dataUser.strengths[j].weight > 500)) {
                 matchs.push(search[i])
             }
         }
